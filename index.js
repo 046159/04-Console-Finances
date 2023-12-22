@@ -1,3 +1,4 @@
+/* Source data provided */
 var finances = [
   ['Jan-2010', 867884],
   ['Feb-2010', 984655],
@@ -87,17 +88,21 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+/* Declare variables */
 var element;
 var netProfitLoss = 0;
 var previousAmount = 867884;
 var changeAmount = 0;
 var changeAmountTotal = 0;
-var totalMonths = finances.length;
 var greatestIncreaseAmount = 0;
 var greatestIncreaseMonth;
 var greatestDecreaseAmount = 0;
 var greatestDecreaseMonth;
 
+/* Declare constants */
+const totalMonths = finances.length;
+
+/* For each element in the source array */
 for (var i = 0; i < totalMonths; i++) {
 
   /* Get the next element in the array */
@@ -116,23 +121,25 @@ for (var i = 0; i < totalMonths; i++) {
   if (changeAmount < 0 && changeAmount < greatestDecreaseAmount) {
     greatestDecreaseAmount = changeAmount;
     greatestDecreaseMonth = element[0];
-  } 
+  }
 
   /* Calculate the greates increase amount and month */
   if (changeAmount > 0 && changeAmount > greatestIncreaseAmount) {
     greatestIncreaseAmount = changeAmount;
     greatestIncreaseMonth = element[0];
-  } 
+  }
 
 }
 
-/*
-Financial Analysis 
-----------------
-totalMonths
-$netProfitLoss
-changeAmountTotal/(totalMonths-1)
-greatestDecreaseAmount 
-greatestDecreaseMonth
+/* Round to two decimal places the average change amount */
+var avgChange = changeAmountTotal / (totalMonths - 1);
+avgChange = avgChange.toFixed(2);
 
-*/
+/* Display all required info to console */
+console.log("Financial Analysis");
+console.log("------------------");
+console.log("Total Months: " + totalMonths);
+console.log("Total: $" + netProfitLoss);
+console.log("Average Change: " + avgChange);
+console.log("Greatest Increase in Profits/Losses: " + greatestIncreaseMonth + " ($" + greatestIncreaseAmount + ")");
+console.log("Greatest Decrease in Profits/Losses: " + greatestDecreaseMonth + " ($" + greatestDecreaseAmount + ")");
