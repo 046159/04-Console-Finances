@@ -112,9 +112,16 @@ for (var i = 0; i < totalMonths; i++) {
   previousAmount = element[1];
   changeAmountTotal = changeAmountTotal + changeAmount;
 
+  /* Calculate the greates decrease amount and month */
   if (changeAmount < 0 && changeAmount < greatestDecreaseAmount) {
     greatestDecreaseAmount = changeAmount;
     greatestDecreaseMonth = element[0];
+  } 
+
+  /* Calculate the greates increase amount and month */
+  if (changeAmount > 0 && changeAmount > greatestIncreaseAmount) {
+    greatestIncreaseAmount = changeAmount;
+    greatestIncreaseMonth = element[0];
   } 
 
 }
