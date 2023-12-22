@@ -89,18 +89,31 @@ var finances = [
 
 var element;
 var netProfitLoss = 0;
-
+var previousAmount = 867884;
+var changeAmount = 0;
+var changeAmountTotal = 0;
 var totalMonths = finances.length;
+
 for (var i = 0; i < totalMonths; i++) {
-  element = finances[i];
+
+  /* Get the next element in the array */
   /* element[0] is Month and element[1] is Amount */
+  element = finances[i];
+
+  /* Calculate the overall net P&L */
   netProfitLoss = netProfitLoss + element[1];
+
+  /* Calculate the average P&L over the period */
+  changeAmount = element[1] - previousAmount;
+  previousAmount = element[1];
+  changeAmountTotal = changeAmountTotal + changeAmount;
 }
-console.log(netProfitLoss);
 
 /*
 Financial Analysis 
 ----------------
-Total Months: totalMonths
-Total: $netProfitLoss
+totalMonths
+$netProfitLoss
+changeAmountTotal/(totalMonths-1)
+
 */
