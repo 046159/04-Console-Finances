@@ -93,6 +93,10 @@ var previousAmount = 867884;
 var changeAmount = 0;
 var changeAmountTotal = 0;
 var totalMonths = finances.length;
+var greatestIncreaseAmount = 0;
+var greatestIncreaseMonth;
+var greatestDecreaseAmount = 0;
+var greatestDecreaseMonth;
 
 for (var i = 0; i < totalMonths; i++) {
 
@@ -107,6 +111,12 @@ for (var i = 0; i < totalMonths; i++) {
   changeAmount = element[1] - previousAmount;
   previousAmount = element[1];
   changeAmountTotal = changeAmountTotal + changeAmount;
+
+  if (changeAmount < 0 && changeAmount < greatestDecreaseAmount) {
+    greatestDecreaseAmount = changeAmount;
+    greatestDecreaseMonth = element[0];
+  } 
+
 }
 
 /*
@@ -115,5 +125,7 @@ Financial Analysis
 totalMonths
 $netProfitLoss
 changeAmountTotal/(totalMonths-1)
+greatestDecreaseAmount 
+greatestDecreaseMonth
 
 */
